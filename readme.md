@@ -1,4 +1,4 @@
-##Making Adele proud, every week.
+##Making Adele proud. Every week.
 
 ![alt tag](adele.jpg)
 

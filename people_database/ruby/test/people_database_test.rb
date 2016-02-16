@@ -18,6 +18,7 @@ class PeopleDatabaseTest < Minitest::Test
 
   def test_remove_people_based_on_email
     people_database = gather_data
+    require "pry"; binding.pry
     people_database.remove("segundo@gmail.com")
 
     assert_equal 5, people_database.people.length

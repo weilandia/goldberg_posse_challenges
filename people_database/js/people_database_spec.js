@@ -38,4 +38,49 @@ describe('db can add people', function() {
 
     expect(person.first_name).toBe('Ursula');
   });
+
+  it('can delete people based on email', function() {
+    var db = new peopleDatabase();
+
+    db.add({first_name: "Jose",
+            last_name:  "Buendia",
+            email:      "jose@gmail.com",
+            state:      "CA"});
+
+    db.add({first_name: "Ursula",
+            last_name:  "Buendia",
+            email:      "ursula@gmail.com",
+            state:      "CA"});
+
+    expect(db.people[0].first_name).toBe("Jose");
+
+    db.remove("jose@gmail.com");
+
+    expect(db.people[0]).toBe(undefined);
+  });
+
+  it('can collect people by state', function() {
+    var db = new peopleDatabase();
+
+    db.add({first_name: "Jose",
+            last_name:  "Buendia",
+            email:      "jose@gmail.com",
+            state:      "CA"});
+
+    db.add({first_name: "Ursula",
+            last_name:  "Buendia",
+            email:      "ursula@gmail.com",
+            state:      "UT"});
+
+    db.add({first_name: "Segundo",
+            last_name:  "Buendia",
+            email:      "ursula@gmail.com",
+            state:      "CA"});
+
+    expect(db.collect_state("CA").length).toBe(2);
+
+    expect(db.collect_state("CA")[0].first_name).toBe("Jose");
+
+    expect(db.collect_state("CA")[1].first_name).toBe("Segundo");
+  });
 });

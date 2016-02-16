@@ -1,14 +1,13 @@
+require_relative 'people_database'
+require 'pry'
+
 class Person
-
-  def initialize(first_name)
-    @first_name = first_name
-    @last_name = last_name
-    @email = email
-    @state = state
-  end
-
-  def person(arguments)
-    {first_name: @first_name, last_name: @last_name, email: @email, state: @state}
+attr_reader :first_name, :last_name, :email, :state
+  def initialize(data)
+    @first_name = data[:first_name]
+    @last_name = data[:last_name]
+    @email = data[:email]
+    @state = data[:state]
   end
 
 

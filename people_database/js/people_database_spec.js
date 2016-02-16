@@ -83,4 +83,48 @@ describe('db can add people', function() {
 
     expect(db.collect_state("CA")[1].first_name).toBe("Segundo");
   });
+
+  it('can count by state', function() {
+    var db = new peopleDatabase();
+
+    db.add({first_name: "Jose",
+            last_name:  "Buendia",
+            email:      "jose@gmail.com",
+            state:      "CA"});
+
+    db.add({first_name: "Ursula",
+            last_name:  "Buendia",
+            email:      "ursula@gmail.com",
+            state:      "UT"});
+
+    db.add({first_name: "Segundo",
+            last_name:  "Buendia",
+            email:      "ursula@gmail.com",
+            state:      "CA"});
+
+    expect(db.state_count("CA")).toBe(2);
+    expect(db.state_count("UT")).toBe(1);
+    expect(db.state_count("NV")).toBe(0);
+  });
+
+  it('can list emails', function() {
+    var db = new peopleDatabase();
+
+    db.add({first_name: "Jose",
+            last_name:  "Buendia",
+            email:      "jose@gmail.com",
+            state:      "CA"});
+
+    db.add({first_name: "Ursula",
+            last_name:  "Buendia",
+            email:      "ursula@gmail.com",
+            state:      "UT"});
+
+    db.add({first_name: "Segundo",
+            last_name:  "Buendia",
+            email:      "ursula@gmail.com",
+            state:      "CA"});
+
+    expect(db.emails()).toBe("jose@gmail.com, ursula@gmail.com, ursula@gmail.com");
+  });
 });

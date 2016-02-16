@@ -26,6 +26,19 @@ var peopleDatabase = function() {
     };
     return state_coll
   };
+
+  this.state_count = function(state) {
+    return this.collect_state(state).length;
+  };
+
+  this.emails = function() {
+    var length = this.people.length;
+    var emails = []
+    for (var i = 0; i < length; i++) {
+      emails.push(this.people[i].email);
+    };
+    return emails.join(', ')
+  };
 };
 
 module.exports = peopleDatabase;

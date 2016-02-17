@@ -1,10 +1,17 @@
 class Person
-  attr_reader :first_name, :last_name, :email, :state
 
-  def initialize(args)
-    @first_name = args[:first_name]
-    @last_name = args[:last_name]
-    @email = args[:email]
-    @state = args[:state]
+  def initialize(first_name)
+    @first_name = first_name
+    @last_name = last_name
+    @email = email
+    @state = state
   end
+
+  def person(arguments)
+    {first_name: @first_name, last_name: @last_name, email: @email, state: @state}
+  end
+
+
+
+
 end

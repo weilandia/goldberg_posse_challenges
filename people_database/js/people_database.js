@@ -1,4 +1,4 @@
-var peopleDatabase = function() {
+	var peopleDatabase = function() {
   var Person = require('./person')
   this.people = [];
 

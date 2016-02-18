@@ -22,4 +22,21 @@ class PeopleDatabase
     chosen_people
   end
 
+  def emails
+    emails = @people.map { |person| person.email }
+    emails.join(", ")
+  end
+
+  def state_counts
+    state_counts = {}
+    @people.each do |person|
+      if state_counts[person.state]
+        state_counts[person.state] += 1
+      else
+        state_counts[person.state] = 1
+      end
+    end
+    state_counts
+  end
+
 end

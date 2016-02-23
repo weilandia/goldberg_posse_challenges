@@ -6,19 +6,20 @@ def self.inspect
 end
 
 def self.from_csv
-  CSV.open(data = '2013_college_scorecards.csv', headers: true, header_converters: :symbol).map do |row|
+  CSV.open('book_file.csv', headers: true, header_converters: :symbol).map do |row|
+    require "pry"; binding.pry
     row.to_hash
   end
 end
 
 def self.by_state(state = ARGV[1])
-  self.from_csv.each do |row| 
+  self.from_csv.each do |row|
     puts row[:instnm] if row[:stabbr].upcase == ARGV[1].upcase
   end
 end
 
 def self.top_average_faculty_salary(entries = ARGV[1])
-  name_with_avg = self.from_csv.map do |row| 
+  name_with_avg = self.from_csv.map do |row|
     [row[:avgfacsal], row[:instnm]]
   end
   name_with_avg.sort_by! { |salary, name| salary.to_i }
@@ -42,4 +43,4 @@ def self.median_debt_between(val1 = ARGV[1], val2 = ARGV[2])
   end
 end
 
-method(ARGV[0]).call
+from_csv

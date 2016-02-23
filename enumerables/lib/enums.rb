@@ -1,0 +1,2 @@
+class Enums
+end

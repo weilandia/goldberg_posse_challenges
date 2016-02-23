@@ -1,6 +1,9 @@
 class Enums
   def self.any?(collection, condition)
-    true
+    collection.each do |n|
+      return true if condition.call(n)
+    end
+    false
   end
 
   def self.select(collection, condition)

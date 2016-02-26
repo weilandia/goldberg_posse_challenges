@@ -23,6 +23,10 @@ class Enums
   end
 
   def self.reject(collection, condition)
+    collection.each do |n|
+      collection.delete(n) if condition.call(n)
+    end
+    collection
   end
 
   def self.reduce_with_proc(collection, condition)

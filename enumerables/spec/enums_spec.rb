@@ -47,4 +47,10 @@ describe Enums do
 
     assert_equal (-13), Enums.reduce(collection, condition)
   end
+
+  it "removes elements that meet criteria" do
+    collection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    condition = Proc.new { |a| a % 2 != 0 }
+    assert_equal [2, 4, 6, 8, 10], Enums.reject(collection, condition)
+  end
 end

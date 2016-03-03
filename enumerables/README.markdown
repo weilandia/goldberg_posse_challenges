@@ -116,7 +116,7 @@ collection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 condition = Proc.new { |a| a % 2 != 0 }
 => #<Proc:0x007facc939d4b0@(pry):22>
 Enums.reject(collection, condition)
-=> [2, 4, 6, 8, 10]
+=> [1, 3, 5, 7, 9]
 ```
 
 ## Learning goals
